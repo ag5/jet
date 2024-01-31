@@ -138,3 +138,8 @@ func Timestampz(year int, month time.Month, day, hour, minute, second int, milli
 func TimestampzT(t time.Time) TimestampzExpression {
 	return CAST(jet.TimestampzT(t)).AS_TIMESTAMPZ()
 }
+
+// DateRange creates new date range literal expression from two dates
+func DateRange(lowIncluded, highIncluded bool, lowDate, highDate time.Time) RangeExpression {
+	return CAST(jet.DateRange(lowIncluded, highIncluded, lowDate, highDate)).AS_DATERANGE()
+}

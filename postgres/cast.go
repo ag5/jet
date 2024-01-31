@@ -43,6 +43,8 @@ type cast interface {
 	AS_TIMESTAMPZ() TimestampzExpression
 	// Cast expression AS interval type
 	AS_INTERVAL() IntervalExpression
+	// Cast expression AS range type
+	AS_DATERANGE() RangeExpression
 }
 
 type castImpl struct {
@@ -158,4 +160,9 @@ func (b *castImpl) AS_TIMESTAMPZ() TimestampzExpression {
 // Cast expression AS interval type
 func (b *castImpl) AS_INTERVAL() IntervalExpression {
 	return IntervalExp(b.AS("interval"))
+}
+
+// Cast expression AS range type
+func (b *castImpl) AS_DATERANGE() RangeExpression {
+	return RangeExp(b.AS("daterange"))
 }

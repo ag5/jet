@@ -36,6 +36,9 @@ type TimestampExpression = jet.TimestampExpression
 // TimestampzExpression interface
 type TimestampzExpression = jet.TimestampzExpression
 
+// RangeExpression interface
+type RangeExpression = jet.RangeExpression
+
 // BoolExp is bool expression wrapper around arbitrary expression.
 // Allows go compiler to see any expression as bool expression.
 // Does not add sql cast to generated sql builder output.
@@ -81,6 +84,11 @@ var TimestampExp = jet.TimestampExp
 // Does not add sql cast to generated sql builder output.
 var TimestampzExp = jet.TimestampzExp
 
+// RangeExp is range expression wrapper around arbitrary expression.
+// Allows go compiler to see any expression as range expression.
+// Does not add sql cast to generated sql builder output.
+var RangeExp = jet.RangeExp
+
 // RawArgs is type used to pass optional arguments to Raw method
 type RawArgs = map[string]interface{}
 
@@ -99,6 +107,7 @@ var (
 	RawTimestamp  = jet.RawTimestamp
 	RawTimestampz = jet.RawTimestampz
 	RawDate       = jet.RawDate
+	// TODO: add raw range
 )
 
 // Func can be used to call custom or unsupported database functions.
