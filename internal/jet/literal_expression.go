@@ -326,6 +326,46 @@ func formatNanoseconds(nanoseconds ...time.Duration) string {
 	return ""
 }
 
+// ---------------------------------------------------//
+type rangeLiteral struct {
+	rangeInterfaceImpl
+	literalExpressionImpl
+}
+
+func RangeRaw(value string) RangeExpression {
+	rangeLiteral := rangeLiteral{}
+	rangeLiteral.literalExpressionImpl = *literal(value)
+	rangeLiteral.rangeInterfaceImpl.parent = &rangeLiteral
+
+	return &rangeLiteral
+}
+
+func DateRange(lowIncluded, highIncluded bool, lowDate, highDate time.Time) RangeExpression {
+	return RangeRaw(getRangeFromDate(lowIncluded, highIncluded, lowDate, highDate))
+}
+
+func getRangeFromDate(lowIncluded, highIncluded bool, lowDate, highDate time.Time) string {
+	lowInc := "["
+	if lowIncluded {
+		lowInc = "("
+	}
+
+	highInc := "]"
+	if highIncluded {
+		highInc = ")"
+	}
+
+	low := "-infinity"
+	if !lowDate.IsZero() {
+		low = lowDate.Format("2006-01-02")
+	}
+	high := "infinity"
+	if !highDate.IsZero() {
+		high = highDate.Format("2006-01-02")
+	}
+	return lowInc + low + "," + high + highInc
+}
+
 //--------------------------------------------------//
 
 var (
