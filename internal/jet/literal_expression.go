@@ -341,13 +341,13 @@ func NumRange(lowNum, highNum *int, bounds string) RangeExpression {
 
 	low := ""
 	if lowNum != nil {
-		low = fmt.Sprint(lowNum)
+		low = fmt.Sprint(*lowNum)
 	}
 	high := ""
 	if highNum != nil {
-		high = fmt.Sprint(highNum)
+		high = fmt.Sprint(*highNum)
 	}
-	return RawRange(fmt.Sprintf("%slowerNum,higherNum%s", bounds[0], bounds[1]), map[string]interface{}{
+	return RawRange(fmt.Sprintf("%clowerNum,higherNum%c", bounds[0], bounds[1]), map[string]interface{}{
 		"lowerNum":  low,
 		"higherNum": high,
 	})
@@ -366,7 +366,7 @@ func TimestampRange(lowTs, highTs time.Time, bounds string) RangeExpression {
 		high = highTs.Format("2006-01-02 15:04:05")
 	}
 
-	return RawRange(fmt.Sprintf("%slowerTs,higherTs%s", bounds[0], bounds[1]), map[string]interface{}{
+	return RawRange(fmt.Sprintf("%clowerTs,higherTs%c", bounds[0], bounds[1]), map[string]interface{}{
 		"lowerTs":  low,
 		"higherTs": high,
 	})
@@ -385,7 +385,7 @@ func TimestampTzRange(lowTs, highTs time.Time, bounds string) RangeExpression {
 		high = highTs.Format("2006-01-02 15:04:05-07")
 	}
 
-	return RawRange(fmt.Sprintf("%slowerTs,higherTs%s", bounds[0], bounds[1]), map[string]interface{}{
+	return RawRange(fmt.Sprintf("%clowerTs,higherTs%c", bounds[0], bounds[1]), map[string]interface{}{
 		"lowerTs":  low,
 		"higherTs": high,
 	})
@@ -404,7 +404,7 @@ func DateRange(lowDate, highDate time.Time, bounds string) RangeExpression {
 		high = highDate.Format("2006-01-02")
 	}
 
-	return RawRange(fmt.Sprintf("%slowerDate,higherDate%s", bounds[0], bounds[1]), map[string]interface{}{
+	return RawRange(fmt.Sprintf("%clowerDate,higherDate%c", bounds[0], bounds[1]), map[string]interface{}{
 		"lowerDate":  low,
 		"higherDate": high,
 	})
