@@ -336,17 +336,63 @@ func RawRange(raw string, namedArgs ...map[string]interface{}) RangeExpression {
 	return RangeExp(Raw(raw, namedArgs...))
 }
 
+func NumRange(lowNum, highNum *int, bounds string) RangeExpression {
+	validateBounds(bounds)
+
+	low := ""
+	if lowNum != nil {
+		low = fmt.Sprint(lowNum)
+	}
+	high := ""
+	if highNum != nil {
+		high = fmt.Sprint(highNum)
+	}
+	return RawRange(fmt.Sprintf("%slowerNum,higherNum%s", bounds[0], bounds[1]), map[string]interface{}{
+		"lowerNum":  low,
+		"higherNum": high,
+	})
+}
+
+func TimestampRange(lowTs, highTs time.Time, bounds string) RangeExpression {
+	validateBounds(bounds)
+
+	// normalize timestamp ranges
+	low := "-infinity"
+	if !lowTs.IsZero() {
+		low = lowTs.Format("2006-01-02 15:04:05")
+	}
+	high := "infinity"
+	if !highTs.IsZero() {
+		high = highTs.Format("2006-01-02 15:04:05")
+	}
+
+	return RawRange(fmt.Sprintf("%slowerTs,higherTs%s", bounds[0], bounds[1]), map[string]interface{}{
+		"lowerTs":  low,
+		"higherTs": high,
+	})
+}
+
+func TimestampTzRange(lowTs, highTs time.Time, bounds string) RangeExpression {
+	validateBounds(bounds)
+
+	// normalize timestamp ranges
+	low := "-infinity"
+	if !lowTs.IsZero() {
+		low = lowTs.Format("2006-01-02 15:04:05-07")
+	}
+	high := "infinity"
+	if !highTs.IsZero() {
+		high = highTs.Format("2006-01-02 15:04:05-07")
+	}
+
+	return RawRange(fmt.Sprintf("%slowerTs,higherTs%s", bounds[0], bounds[1]), map[string]interface{}{
+		"lowerTs":  low,
+		"higherTs": high,
+	})
+}
+
 func DateRange(lowDate, highDate time.Time, bounds string) RangeExpression {
-	// validate bounds
-	if len(bounds) != 2 {
-		panic("bound must contains 2 elements for lower and higher bound")
-	}
-	if bounds[0] != '[' && bounds[0] != '(' {
-		panic("unsupported bound in lower range bound " + string(bounds[0]))
-	}
-	if bounds[1] != ']' && bounds[1] != ')' {
-		panic("unsupported bound in lower range bound " + string(bounds[1]))
-	}
+	validateBounds(bounds)
 
 	// normalize date ranges
 	low := "-infinity"
@@ -362,6 +408,18 @@ func DateRange(lowDate, highDate time.Time, bounds string) RangeExpression {
 		"lowerDate":  low,
 		"higherDate": high,
 	})
+}
+
+func validateBounds(bounds string) {
+	if len(bounds) != 2 {
+		panic("bound must contains 2 elements for lower and higher bound")
+	}
+	if bounds[0] != '[' && bounds[0] != '(' {
+		panic("unsupported bound in lower range bound " + string(bounds[0]))
+	}
+	if bounds[1] != ']' && bounds[1] != ')' {
+		panic("unsupported bound in lower range bound " + string(bounds[1]))
+	}
 }
 
 //--------------------------------------------------//
