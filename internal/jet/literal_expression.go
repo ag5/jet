@@ -332,29 +332,23 @@ type rangeLiteral struct {
 	literalExpressionImpl
 }
 
-func RangeRaw(value string) RangeExpression {
-	rangeLiteral := rangeLiteral{}
-	rangeLiteral.literalExpressionImpl = *literal(value)
-	rangeLiteral.rangeInterfaceImpl.parent = &rangeLiteral
-
-	return &rangeLiteral
+func RawRange(raw string, namedArgs ...map[string]interface{}) RangeExpression {
+	return RangeExp(Raw(raw, namedArgs...))
 }
 
-func DateRange(lowIncluded, highIncluded bool, lowDate, highDate time.Time) RangeExpression {
-	return RangeRaw(getRangeFromDate(lowIncluded, highIncluded, lowDate, highDate))
-}
-
-func getRangeFromDate(lowIncluded, highIncluded bool, lowDate, highDate time.Time) string {
-	lowInc := "["
-	if lowIncluded {
-		lowInc = "("
+func DateRange(lowDate, highDate time.Time, bounds string) RangeExpression {
+	// validate bounds
+	if len(bounds) != 2 {
+		panic("bound must contains 2 elements for lower and higher bound")
+	}
+	if bounds[0] != '[' && bounds[0] != '(' {
+		panic("unsupported bound in lower range bound " + string(bounds[0]))
+	}
+	if bounds[1] != ']' && bounds[1] != ')' {
+		panic("unsupported bound in lower range bound " + string(bounds[1]))
 	}
 
-	highInc := "]"
-	if highIncluded {
-		highInc = ")"
-	}
-
+	// normalize date ranges
 	low := "-infinity"
 	if !lowDate.IsZero() {
 		low = lowDate.Format("2006-01-02")
@@ -363,7 +357,11 @@ func getRangeFromDate(lowIncluded, highIncluded bool, lowDate, highDate time.Tim
 	if !highDate.IsZero() {
 		high = highDate.Format("2006-01-02")
 	}
-	return lowInc + low + "," + high + highInc
+
+	return RawRange(fmt.Sprintf("%slowerDate,higherDate%s", bounds[0], bounds[1]), map[string]interface{}{
+		"lowerDate":  low,
+		"higherDate": high,
+	})
 }
 
 //--------------------------------------------------//
