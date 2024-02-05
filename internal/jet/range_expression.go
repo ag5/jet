@@ -20,7 +20,7 @@ type RangeExpression interface {
 }
 
 type rangeInterfaceImpl struct {
-	parent RangeExpression
+	parent Expression
 }
 
 func (r *rangeInterfaceImpl) EQ(rhs RangeExpression) BoolExpression {

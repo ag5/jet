@@ -70,12 +70,12 @@ func GtEq(lhs, rhs Expression) BoolExpression {
 }
 
 // Contains returns a representation of "a @> b"
-func Contains(lhs RangeExpression, rhs Expression) BoolExpression {
+func Contains(lhs Expression, rhs Expression) BoolExpression {
 	return newBinaryBoolOperatorExpression(lhs, rhs, "@>")
 }
 
 // Overlap returns a representation of "a && b"
-func Overlap(lhs, rhs RangeExpression) BoolExpression {
+func Overlap(lhs, rhs Expression) BoolExpression {
 	return newBinaryBoolOperatorExpression(lhs, rhs, "&&")
 }
 
