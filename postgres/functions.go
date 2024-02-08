@@ -267,6 +267,14 @@ var TO_HEX = jet.TO_HEX
 
 //----------Data Type Formatting Functions ----------------------//
 
+// RANGE_LOWER returns range expressions lower bound
+var RANGE_LOWER = jet.RANGE_LOWER
+
+// RANGE_UPPER returns range expressions upper bound
+var RANGE_UPPER = jet.RANGE_UPPER
+
+//----------Data Type Formatting Functions ----------------------//
+
 // TO_CHAR converts expression to string with format
 var TO_CHAR = jet.TO_CHAR
 

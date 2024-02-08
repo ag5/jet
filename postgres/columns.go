@@ -65,6 +65,12 @@ type ColumnTimestampz = jet.ColumnTimestampz
 // TimestampzColumn creates named timestamp with time zone column.
 var TimestampzColumn = jet.TimestampzColumn
 
+// ColumnRange is interface of SQL range column
+type ColumnRange = jet.ColumnRange
+
+// RangeColumn creates named range with range column
+var RangeColumn = jet.RangeColumn
+
 //------------------------------------------------------//
 
 // ColumnInterval is interface of PostgreSQL interval columns.

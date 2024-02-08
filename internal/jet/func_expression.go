@@ -468,6 +468,18 @@ func REGEXP_LIKE(stringExp StringExpression, pattern StringExpression, matchType
 	return newBoolFunc("REGEXP_LIKE", stringExp, pattern)
 }
 
+//----------Range Type Functions ----------------------//
+
+// RANGE_LOWER returns range expressions lower bound
+func RANGE_LOWER(rangeExpression RangeExpression) RangeExpression {
+	return NewRangeFunc("LOWER", rangeExpression)
+}
+
+// RANGE_UPPER returns range expressions upper bound
+func RANGE_UPPER(rangeExpression RangeExpression) RangeExpression {
+	return NewRangeFunc("UPPER", rangeExpression)
+}
+
 //----------Data Type Formatting Functions ----------------------//
 
 // TO_CHAR converts expression to string with format
@@ -842,4 +854,19 @@ func newTimestampzFunc(name string, expressions ...Expression) *timestampzFunc {
 // Func can be used to call custom or unsupported database functions.
 func Func(name string, expressions ...Expression) Expression {
 	return NewFunc(name, expressions, nil)
+}
+
+type rangeFunc struct {
+	funcExpressionImpl
+	rangeInterfaceImpl
+}
+
+// NewRangeFunc creates new range function with name and expression parameters
+func NewRangeFunc(name string, expressions ...Expression) *rangeFunc {
+	rangeFunc := &rangeFunc{}
+
+	rangeFunc.funcExpressionImpl = *NewFunc(name, expressions, rangeFunc)
+	rangeFunc.rangeInterfaceImpl.parent = rangeFunc
+
+	return rangeFunc
 }

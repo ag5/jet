@@ -138,3 +138,23 @@ func Timestampz(year int, month time.Month, day, hour, minute, second int, milli
 func TimestampzT(t time.Time) TimestampzExpression {
 	return CAST(jet.TimestampzT(t)).AS_TIMESTAMPZ()
 }
+
+// DateRange creates new date range literal expression from two dates
+func DateRange(lowDate, highDate time.Time, bounds string) RangeExpression {
+	return CAST(jet.DateRange(lowDate, highDate, bounds)).AS_DATERANGE()
+}
+
+// NumRange creates new num range literal expression from two number
+func NumRange(lowNum, highNum *int, bounds string) RangeExpression {
+	return CAST(jet.NumRange(lowNum, highNum, bounds)).AS_NUMRANGE()
+}
+
+// TimestampRange creates new timestamp range literal expression from two timestamps
+func TimestampRange(lowTs, highTs time.Time, bounds string) RangeExpression {
+	return CAST(jet.TimestampRange(lowTs, highTs, bounds)).AS_TSRANGE()
+}
+
+// TimestampTzRange creates new timestamp with timezone range literal expression from two timestamptz
+func TimestampTzRange(lowTs, highTs time.Time, bounds string) RangeExpression {
+	return CAST(jet.TimestampTzRange(lowTs, highTs, bounds)).AS_TSTZRANGE()
+}
