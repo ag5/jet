@@ -4,9 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"github.com/go-jet/jet/v2/generator/metadata"
-	"github.com/go-jet/jet/v2/internal/utils/semantic"
-	"github.com/go-jet/jet/v2/qrm"
+	"github.com/ag5/jet/v2/generator/metadata"
+	"github.com/ag5/jet/v2/internal/utils/semantic"
+	"github.com/ag5/jet/v2/qrm"
 	"strings"
 )
 

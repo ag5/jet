@@ -1,8 +1,8 @@
 package jet
 
 import (
-	"github.com/go-jet/jet/v2/internal/utils/dbidentifier"
-	"github.com/go-jet/jet/v2/internal/utils/must"
+	"github.com/ag5/jet/v2/internal/utils/dbidentifier"
+	"github.com/ag5/jet/v2/internal/utils/must"
 	"reflect"
 	"strings"
 )

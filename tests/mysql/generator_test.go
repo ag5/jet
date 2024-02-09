@@ -8,9 +8,9 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-jet/jet/v2/generator/mysql"
-	"github.com/go-jet/jet/v2/internal/testutils"
-	"github.com/go-jet/jet/v2/tests/dbconfig"
+	"github.com/ag5/jet/v2/generator/mysql"
+	"github.com/ag5/jet/v2/internal/testutils"
+	"github.com/ag5/jet/v2/tests/dbconfig"
 )
 
 const genTestDirRoot = "./.gentestdata3"
@@ -208,7 +208,7 @@ func TestSQLBuilderColumnComment(t *testing.T) {
 package table
 
 import (
-	"github.com/go-jet/jet/v2/mysql"
+	"github.com/ag5/jet/v2/mysql"
 )
 
 var Link = newLinkTable("test_sample", "link", "")
@@ -295,7 +295,7 @@ var mpaaRatingEnumFile = `
 
 package enum
 
-import "github.com/go-jet/jet/v2/mysql"
+import "github.com/ag5/jet/v2/mysql"
 
 var FilmRating = &struct {
 	G    mysql.StringExpression
@@ -323,7 +323,7 @@ var actorSQLBuilderFile = `
 package table
 
 import (
-	"github.com/go-jet/jet/v2/mysql"
+	"github.com/ag5/jet/v2/mysql"
 )
 
 var Actor = newActorTable("dvds", "actor", "")
@@ -464,7 +464,7 @@ var actorInfoSQLBuilderFile = `
 package view
 
 import (
-	"github.com/go-jet/jet/v2/mysql"
+	"github.com/ag5/jet/v2/mysql"
 )
 
 var ActorInfo = newActorInfoTable("dvds", "actor_info", "")

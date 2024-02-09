@@ -21,7 +21,7 @@ var tableSQLBuilderTemplate = `
 package {{package}}
 
 import (
-	"github.com/go-jet/jet/v2/{{dialect.PackageName}}"
+	"github.com/ag5/jet/v2/{{dialect.PackageName}}"
 )
 
 var {{tableTemplate.InstanceName}} = new{{tableTemplate.TypeName}}("{{schemaName}}", "{{.Name}}", "{{tableTemplate.DefaultAlias}}")
@@ -130,7 +130,7 @@ type {{$modelTableTemplate.TypeName}} struct {
 
 var enumSQLBuilderTemplate = `package {{package}}
 
-import "github.com/go-jet/jet/v2/{{dialect.PackageName}}"
+import "github.com/ag5/jet/v2/{{dialect.PackageName}}"
 
 var {{enumTemplate.InstanceName}} = &struct {
 {{- range $index, $value := .Values}}

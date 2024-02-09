@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/go-jet/jet/v2/generator/metadata"
-	"github.com/go-jet/jet/v2/qrm"
+	"github.com/ag5/jet/v2/generator/metadata"
+	"github.com/ag5/jet/v2/qrm"
 	"golang.org/x/sync/errgroup"
 )
 

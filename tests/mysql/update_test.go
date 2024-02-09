@@ -8,10 +8,10 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-jet/jet/v2/internal/testutils"
-	. "github.com/go-jet/jet/v2/mysql"
-	"github.com/go-jet/jet/v2/tests/.gentestdata/mysql/test_sample/model"
-	. "github.com/go-jet/jet/v2/tests/.gentestdata/mysql/test_sample/table"
+	"github.com/ag5/jet/v2/internal/testutils"
+	. "github.com/ag5/jet/v2/mysql"
+	"github.com/ag5/jet/v2/tests/.gentestdata/mysql/test_sample/model"
+	. "github.com/ag5/jet/v2/tests/.gentestdata/mysql/test_sample/table"
 )
 
 func TestUpdateValues(t *testing.T) {

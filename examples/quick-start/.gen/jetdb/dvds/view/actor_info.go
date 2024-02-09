@@ -8,7 +8,7 @@
 package view
 
 import (
-	"github.com/go-jet/jet/v2/postgres"
+	"github.com/ag5/jet/v2/postgres"
 )
 
 var ActorInfo = newActorInfoTable("dvds", "actor_info", "")

@@ -56,14 +56,14 @@ To install Jet package, you need to install Go and set your Go workspace first.
 
 Use the command bellow to add jet as a dependency into `go.mod` project:
 ```sh
-$ go get -u github.com/go-jet/jet/v2
+$ go get -u github.com/ag5/jet/v2
 ```
 
 Jet generator can be installed in one of the following ways:
 
 - (Go1.16+) Install jet generator using go install:
 ```sh
-go install github.com/go-jet/jet/v2/cmd/jet@latest
+go install github.com/ag5/jet/v2/cmd/jet@latest
 ```
 *Jet generator is installed to the directory named by the GOBIN environment variable,
 which defaults to $GOPATH/bin or $HOME/go/bin if the GOPATH environment variable is not set.*
@@ -153,10 +153,10 @@ First we need to import postgres SQLBuilder and generated packages from the prev
 import (
 	// dot import so go code would resemble as much as native SQL
 	// dot import is not mandatory
-	. "github.com/go-jet/jet/v2/examples/quick-start/.gen/jetdb/dvds/table"
-	. "github.com/go-jet/jet/v2/postgres"
+	. "github.com/ag5/jet/v2/examples/quick-start/.gen/jetdb/dvds/table"
+	. "github.com/ag5/jet/v2/postgres"
 
-	"github.com/go-jet/jet/v2/examples/quick-start/.gen/jetdb/dvds/model"
+	"github.com/ag5/jet/v2/examples/quick-start/.gen/jetdb/dvds/model"
 )
 ```
 Let's say we want to retrieve the list of all _actors_ that acted in _films_ longer than 180 minutes, _film language_ is 'English' 

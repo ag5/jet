@@ -1,7 +1,7 @@
 package template
 
 import (
-	"github.com/go-jet/jet/v2/generator/metadata"
+	"github.com/ag5/jet/v2/generator/metadata"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

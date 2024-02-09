@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"database/sql/driver"
 	"fmt"
-	"github.com/go-jet/jet/v2/internal/utils/min"
+	"github.com/ag5/jet/v2/internal/utils/min"
 	"reflect"
 	"strconv"
 	"time"

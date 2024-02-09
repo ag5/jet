@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"github.com/go-jet/jet/v2/tests/internal/utils/repo"
+	"github.com/ag5/jet/v2/tests/internal/utils/repo"
 	"math/rand"
 	"os"
 	"runtime"
@@ -13,8 +13,8 @@ import (
 
 	"github.com/jackc/pgx/v4/stdlib"
 
-	"github.com/go-jet/jet/v2/postgres"
-	"github.com/go-jet/jet/v2/tests/dbconfig"
+	"github.com/ag5/jet/v2/postgres"
+	"github.com/ag5/jet/v2/tests/dbconfig"
 	_ "github.com/lib/pq"
 	"github.com/pkg/profile"
 	"github.com/stretchr/testify/require"

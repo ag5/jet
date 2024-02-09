@@ -2,7 +2,7 @@ package postgres
 
 import (
 	"fmt"
-	"github.com/go-jet/jet/v2/tests/internal/utils/file"
+	"github.com/ag5/jet/v2/tests/internal/utils/file"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -12,11 +12,11 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-jet/jet/v2/generator/postgres"
-	"github.com/go-jet/jet/v2/internal/testutils"
-	"github.com/go-jet/jet/v2/tests/dbconfig"
+	"github.com/ag5/jet/v2/generator/postgres"
+	"github.com/ag5/jet/v2/internal/testutils"
+	"github.com/ag5/jet/v2/tests/dbconfig"
 
-	"github.com/go-jet/jet/v2/tests/.gentestdata/jetdb/dvds/model"
+	"github.com/ag5/jet/v2/tests/.gentestdata/jetdb/dvds/model"
 )
 
 func dsn(host string, port int, dbName, user, password string) string {
@@ -280,7 +280,7 @@ var mpaaRatingEnumFile = `
 
 package enum
 
-import "github.com/go-jet/jet/v2/postgres"
+import "github.com/ag5/jet/v2/postgres"
 
 var MpaaRating = &struct {
 	G    postgres.StringExpression
@@ -308,7 +308,7 @@ var actorSQLBuilderFile = `
 package table
 
 import (
-	"github.com/go-jet/jet/v2/postgres"
+	"github.com/ag5/jet/v2/postgres"
 )
 
 var Actor = newActorTable("dvds", "actor", "")
@@ -448,7 +448,7 @@ var actorInfoSQLBuilderFile = `
 package view
 
 import (
-	"github.com/go-jet/jet/v2/postgres"
+	"github.com/ag5/jet/v2/postgres"
 )
 
 var ActorInfo = newActorInfoTable("dvds", "actor_info", "")
@@ -583,7 +583,7 @@ var moodEnumContent = `
 
 package enum
 
-import "github.com/go-jet/jet/v2/postgres"
+import "github.com/ag5/jet/v2/postgres"
 
 var Mood = &struct {
 	Sad   postgres.StringExpression
@@ -606,7 +606,7 @@ var levelEnumContent = `
 
 package enum
 
-import "github.com/go-jet/jet/v2/postgres"
+import "github.com/ag5/jet/v2/postgres"
 
 var Level = &struct {
 	Level1 postgres.StringExpression
@@ -716,7 +716,7 @@ var allTypesTableContent = `
 package table
 
 import (
-	"github.com/go-jet/jet/v2/postgres"
+	"github.com/ag5/jet/v2/postgres"
 )
 
 var AllTypes = newAllTypesTable("test_sample", "all_types", "")
